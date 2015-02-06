@@ -1,9 +1,9 @@
 {
-	"name"         : "mean-skeleton",
-	"version"      : "0.4.1",
-	"description"  : "Skeleton for an application using the MEAN stack.",
+	"name"         : "droovle",
+	"version"      : "0.1.0",
+	"description"  : "Droovle",
 	"main"         : "server.js",
-	"author"       : "Alfred",
+	"author"       : "Tim",
 	"dependencies" : {
 		"express"    : "latest",
 		"body-parser": "latest",
@@ -14,6 +14,6 @@
 	"repository"   :
 		{
 			"type" : "git",
-			"url" : "https://github.com/alfredababio/mean-skeleton.git"
+			"url" : "https://github.com/tromberg/mean-skeleton.git"
 		}
 }
