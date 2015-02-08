@@ -1,68 +1,63 @@
 <!DOCTYPE html>
-<html ng-app="myApp">
-<head>
-	<title>MEAN Skeleton Page</title>
+<html ng-app="droovle">
+<head lang="en">
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+    <script type="text/javascript" src="../services/droovle-service.js"></script>
+    <!-- Load AppController -->
+    <script type="text/javascript" src="../controllers/droovle-app.js"></script>
 
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="../assets/css/styles.css">
-
-	<!--  Angular from Google CDN -->
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
-	<!-- Load AppController -->
-	<script type="text/javascript" src="../controllers/app.js"></script>
+    <title>Droovle</title>
 </head>
-<body ng-controller="appCtrl">
-	<div class="container">
-		<div class="jumbotron text-center">
-			<h1>Models <span class="label label-info">{{ models.length }}</span></h1>
-		</div>
+<body ng-controller="CreateDroovleCtrl as createCtr">
+<div id="pnlStepOne" ng-show="createCtr.isStep(1)">
+    <h1>Droovle</h1>
 
-		<!-- MODEL LIST -->
-		<div id="model-list" class="row">
-			<div class="col-sm-4 col-sm-offset-4">
+    <h2>Instant carpools</h2>
 
-				<!-- LOOP OVER THE MODELS IN $scope.models -->
-				<div ng-repeat="model in models" class="model-item">
-					<div class="input-group input-group-lg">
-						<div class="input-group-addon">
-							<div class="glyphicon glyphicon-remove" ng-click="deleteModel(model._id)">
-							</div>
-						</div>
+    <p>
+        Explain explain blablabla
+    </p>
 
-						<div type="text" class="form-control"> {{model.name}}</div>
-					</div>
-				</div>
+    <form name="frmStepOne" novalidate ng-submit="frmStepOne.$valid && oneSubmitted && createCtr.nextStep()">
+        <p>
+            <label for="address1">Address</label><br>
+            <input type="text" id="address1" name="address1" placeholder="For ex. 19 rue Bardinet, Paris" required
+                   ng-model="createCtr.droovle.address">
+            <button type="submit" ng-click="oneSubmitted=true">Start &gt;</button>
 
-			</div>
-		</div>
+        </p>
+    </form>
+</div>
+<div id="pnlStepTwo" ng-show="createCtr.isStep(2)">
+    <h1>Step two</h1>
 
-		<!-- FORM TO CREATE MODELS -->
-		<div id="model-form" class="form-horizontal">
-			<div class="col-sm-8 col-sm-offset-2 text-center" id="name-field">
-				
-				<!-- Only posts to Angular's createModel if form is valid and was submitted -->
-				<form name="modelCreate" ng-submit="modelCreate.$valid && submitted && createModel()" novalidate>
-					<div class="form-group" ng-class="{'has-error': submitted && modelCreate.name.$invalid}">
-						
-						<!-- BIND THIS VALUE TO formData.name -->
-						<div class="col-sm-12">
-							<input type="name" name="name"  class="form-control input-lg text-center" placeholder="Model" ng-model="formData.name" required />
-							
-							<div ng-show="submitted && modelCreate.name.$invalid">
-								<p ng-show="modelCreate.name.$error.required">
-									Name is a required field
-								</p>
-							</div>
-						</div>
-					</div>
+    <form name="frmStepTwo" novalidate ng-submit="frmStepTwo.$valid && twoSubmitted && createCtr.nextStep()">
+        <p>
+            <label for="address2">Address</label><br>
+            <input type="text" id="address2" name="address2" required ng-model="createCtr.droovle.address">
+        </p>
 
-					<!-- Sets the value submitted to true to help with form validation -->
-					<button type="submit" class="btn btn-primary btn-lg" ng-click="submitted=true">
-						Add
-					</button>
-				</form>
-			</div>
-		</div>
-	</div>
+        <p>
+            <label for="eventName">Name of event (or destination)</label><br>
+            <input type="text" id="eventName" name="eventName" required ng-model="createCtr.droovle.eventName">
+        </p>
+
+        <p>
+            <label for="email">Your e-mail address</label><br>
+            <input type="email" id="email" name="email" required ng-model="createCtr.droovle.email">
+        </p>
+
+        <p>
+            <button type="submit" ng-click="twoSubmitted=true">Almost done &gt;</button>
+        </p>
+
+    </form>
+</div>
+<div id="pnlStepThree" ng-show="createCtr.isStep(3)">
+    <h1>Step Three</h1>
+
+</div>
+
 </body>
 </html>
