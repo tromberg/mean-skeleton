@@ -5,3 +5,12 @@
 #name-field {
 	margin-top: 80px;
 }
+
+.ng-invalid.ng-dirty {
+    border-color: red;
+    outline-color: red;
+}
+.ng-valid.ng-dirty {
+    border-color: green;
+    outline-color: green;
+}
